@@ -29,3 +29,17 @@ def create_city(name):
             state["cities"].append(new_city)
             return new_city
     return {"message": "State not found"}, 404
+
+@app.get("/state/<string:name>")
+def get_state(name):
+    for state in states:
+        if state["name"] == name:
+            return state
+    return {"message": "State not found"}, 404
+
+@app.get("/state/<string:name>/city")
+def get_city_in_state(name):
+    for state in states:
+        if state["name"] == name:
+            return {"city": states["cities"]}
+    return {"message": "State not found"}, 404
