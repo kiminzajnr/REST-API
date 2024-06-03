@@ -41,5 +41,5 @@ def get_state(name):
 def get_city_in_state(name):
     for state in states:
         if state["name"] == name:
-            return {"cities": states["cities"]}
+            return {"cities": state["cities"]}
     return {"message": "State not found"}, 404
