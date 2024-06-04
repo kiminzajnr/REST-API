@@ -12,9 +12,9 @@ def get_states():
 
 @app.post("/state")
 def create_state():
-    request_data = request.get_json()
+    state_data = request.get_json()
     state_id = uuid.uuid4().hex
-    state = {**request_data, "id": state_id}
+    state = {**state_data, "id": state_id}
     states[state_id] = state
 
     return state
