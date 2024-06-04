@@ -64,4 +64,12 @@ def update_city(city_id):
         city |= city_data
         return city
     except KeyError:
-        return {"message": "City not found."}
+        return {"message": "City not found."}, 404
+    
+@app.delete("/state/<string:state_id>")
+def delete_state(state_id):
+    try:
+        del states[state_id]
+        return {"message": "State deleted."}
+    except KeyError:
+        return {"message": "State not found."}, 404
