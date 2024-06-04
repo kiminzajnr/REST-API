@@ -1,4 +1,5 @@
 from flask import Flask, request
+from db import states, cities
 
 app = Flask(__name__)
 
