@@ -1,17 +1,13 @@
 from flask import Flask, request
 from db import states, cities
 
+
 app = Flask(__name__)
 
-states = [
-    {
-        "name": "Alabama", "cities": [{"name": "Birmingham"}, {"name": "Montgomery"}, {"name": "Mobile"}]
-    }
-]
 
 @app.get("/state")
 def get_states():
-    return {"states": states}
+    return {"states": list(states.values())}
 
 @app.post("/state")
 def create_state():
@@ -32,11 +28,11 @@ def create_city(name):
     return {"message": "State not found"}, 404
 
 @app.get("/state/<string:name>")
-def get_state(name):
-    for state in states:
-        if state["name"] == name:
-            return state
-    return {"message": "State not found"}, 404
+def get_state(state_id):
+    try:
+        return states[state_id]
+    except KeyError:
+        return {"message": "State not found"}, 404
 
 @app.get("/state/<string:name>/city")
 def get_city_in_state(name):
