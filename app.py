@@ -10,6 +10,10 @@ app = Flask(__name__)
 def get_states():
     return {"states": list(states.values())}
 
+@app.get("/city")
+def get_cities():
+    return {"cities": list(cities.values())}
+
 @app.post("/state")
 def create_state():
     state_data = request.get_json()
