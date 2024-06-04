@@ -47,3 +47,12 @@ def get_city(city_id):
         return cities[city_id]
     except KeyError:
         return {"message": "City not found"}, 404
+    
+@app.get("/city/<string:city_id>")
+def delete_city(city_id):
+    try:
+        del cities[city_id]
+        return {"message": "City deleted."}
+    except KeyError:
+        return {"message": "City not found"}, 404
+    
