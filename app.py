@@ -43,6 +43,6 @@ def get_state(state_id):
 @app.get("/city/<string:city_id>")
 def get_city(city_id):
     try:
-        return cities["city_id"]
+        return cities[city_id]
     except KeyError:
         return {"message": "City not found"}, 404
