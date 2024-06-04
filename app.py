@@ -30,10 +30,11 @@ def create_city(name):
         return {"message": "State not found"}, 404
     city_id = uuid.uuid4().hex
     city = {**city_data, "id": city_id}
+    cities[city_id] = city
 
     return city
 
-@app.get("/state/<string:name>")
+@app.get("/state/<string:state_id>")
 def get_state(state_id):
     try:
         return states[state_id]
