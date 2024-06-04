@@ -56,3 +56,12 @@ def delete_city(city_id):
     except KeyError:
         return {"message": "City not found"}, 404
     
+@app.put("/city/<string:city_id>")
+def update_city(city_id):
+    city_data = request.get_json()
+    try:
+        city = cities[city_id]
+        city |= city_data
+        return city
+    except KeyError:
+        return {"message": "City not found."}
