@@ -40,9 +40,9 @@ def get_state(state_id):
     except KeyError:
         return {"message": "State not found"}, 404
 
-@app.get("/state/<string:name>/city")
-def get_city_in_state(name):
-    for state in states:
-        if state["name"] == name:
-            return {"cities": state["cities"]}
-    return {"message": "State not found"}, 404
+@app.get("/city/<string:city_id>")
+def get_city(city_id):
+    try:
+        return cities["city_id"]
+    except KeyError:
+        return {"message": "City not found"}, 404
