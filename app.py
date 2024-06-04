@@ -21,13 +21,13 @@ def create_state():
 
 @app.post("/state/<string:name>/city")
 def create_city(name):
-    request_data = request.get_json()
-    for state in states:
-        if state["name"] == name:
-            new_city = {"name": request_data["name"]}
-            state["cities"].append(new_city)
-            return new_city
-    return {"message": "State not found"}, 404
+    city_data = request.get_json()
+    if city_data["state_id"] not in states:
+        return {"message": "State not found"}, 404
+    city_id = uuid.uuid4().hex
+    city = {**city_data, "id": city_id}
+
+    return city
 
 @app.get("/state/<string:name>")
 def get_state(state_id):
