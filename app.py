@@ -23,10 +23,10 @@ def create_state():
 
     return state
 
-@app.post("/state/<string:name>/city")
-def create_city(name):
+@app.post("/city")
+def create_city():
     city_data = request.get_json()
-    if city_data["state_id"] not in states:
+    if city_data["id"] not in states:
         return {"message": "State not found"}, 404
     city_id = uuid.uuid4().hex
     city = {**city_data, "id": city_id}
