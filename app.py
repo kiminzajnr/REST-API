@@ -1,3 +1,4 @@
+import uuid
 from flask import Flask, request
 from db import states, cities
 
@@ -12,10 +13,11 @@ def get_states():
 @app.post("/state")
 def create_state():
     request_data = request.get_json()
-    new_state = {"name": request_data["name"], "cities": []}
-    states.append(new_state)
+    state_id = uuid.uuid4().hex
+    state = {**request_data, "id": state_id}
+    states[state_id] = state
 
-    return new_state, 201
+    return state
 
 @app.post("/state/<string:name>/city")
 def create_city(name):
