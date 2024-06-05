@@ -16,7 +16,9 @@ create, read, update, and delete states and cities.
 # Setup
 
 ## Using virtual env
-```git clone https://github.com/kiminzajnr/RESTful-Flask-API.git
+```
+git clone https://github.com/kiminzajnr/RESTful-Flask-API.git
 cd RESTful-Flask-API
 python3 -m venv venv
-. venv/bin/activate```
+. venv/bin/activate
+```
