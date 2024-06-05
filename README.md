@@ -21,4 +21,5 @@ git clone https://github.com/kiminzajnr/RESTful-Flask-API.git
 cd RESTful-Flask-API
 python3 -m venv venv
 . venv/bin/activate
+pip install -r requirements.txt
 ```
