@@ -28,3 +28,11 @@ pip install -r requirements.txt
 ```
 flask run
 ```
+
+## Using docker
+```
+git clone https://github.com/kiminzajnr/RESTful-Flask-API.git
+cd RESTful-Flask-API
+docker build -t flask-api .
+docker run -dp 5000:5000 -w /app -v "$(pwd):/app" flask-api
+```
