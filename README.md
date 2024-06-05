@@ -47,3 +47,5 @@ docker run -dp 5000:5000 -w /app -v "$(pwd):/app" flask-api
     - Run `kill -9 PID` - `PID` obtained from above
 
 `docker: Cannot connect to the Docker daemon at ... docker.sock. Is the docker daemon running?.`
+- If on macOS/Windows run docker desktop.
+- On Linux start docker service.
