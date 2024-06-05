@@ -24,7 +24,7 @@ python3 -m venv venv
 pip install -r requirements.txt
 ```
 
-## Run the app
+#### Run the app
 ```
 flask run
 ```
