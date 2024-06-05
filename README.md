@@ -36,3 +36,6 @@ cd RESTful-Flask-API
 docker build -t flask-api .
 docker run -dp 5000:5000 -w /app -v "$(pwd):/app" flask-api
 ```
+
+#### Common error when using docker
+`Error response from daemon: Ports are not available: exposing port TCP 0.0.0.0:5000 -> 0.0.0.0:0: listen tcp 0.0.0.0:5000: bind: address already in use.`
