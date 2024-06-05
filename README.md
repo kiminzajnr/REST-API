@@ -12,3 +12,11 @@ create, read, update, and delete states and cities.
 - `GET /city/<string:city_id>` - Retrieve a city given its ID.
 - `PUT /city/<string:city_id>` - Update a city given its ID.
 - `DELETE /city/<string:city_id>` - Delete a city given its ID.
+
+# Setup
+
+## Using virtual env
+```git clone https://github.com/kiminzajnr/RESTful-Flask-API.git
+cd RESTful-Flask-API
+python3 -m venv venv
+. venv/bin/activate```
