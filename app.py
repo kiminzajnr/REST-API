@@ -5,7 +5,6 @@ from db import states, cities
 
 app = Flask(__name__)
 
-
 @app.get("/state")
 def get_states():
     return {"states": list(states.values())}
