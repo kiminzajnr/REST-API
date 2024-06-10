@@ -6,7 +6,7 @@ from db import cities
 
 blp = Blueprint("Cities", __name__, description="Operations on items")
 
-@blp.route("/city/<string:item_id")
+@blp.route("/city/<string:item_id>")
 class City(MethodView):
     def get(self, city_id):
         try:
