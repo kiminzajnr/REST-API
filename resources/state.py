@@ -11,31 +11,31 @@ blp = Blueprint("states", __name__, description="Operations on states")
 @blp.route("/state/<string:state_id>")
 class State(MethodView):
     @blp.response(200, StateSchema)
-    def get(self, state_id):
+    def get(cls, state_id):
         try:
             return states[state_id]
         except KeyError:
-            return {"message": "State not found"}, 404  
+            abort(404, message="State not found")
     
-    def delete(self, state_id):
+    def delete(cls, state_id):
         try:
             del states[state_id]
             return {"message": "State deleted."}
         except KeyError:
-            return {"message": "State not found."}, 404
+            abort(404, message="State not found.")
         
 @blp.route("/state")
 class StateList(MethodView):
     @blp.response(200, StateSchema(many=True))
-    def get(self):
-        return {"states": list(states.values())}
+    def get(cls):
+        return states.values()
     
     @blp.arguments(StateSchema)
     @blp.response(201, StateSchema)
-    def post(self, state_data):
+    def post(cls, state_data):
         for state in states.values():
             if state_data["name"] == state["name"]:
-                abort(400, message=f"Store already exists.")
+                abort(400, message=f"State already exists.")
 
         state_id = uuid.uuid4().hex
         state = {**state_data, "id": state_id}
