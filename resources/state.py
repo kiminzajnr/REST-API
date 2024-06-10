@@ -10,6 +10,7 @@ blp = Blueprint("states", __name__, description="Operations on states")
 
 @blp.route("/state/<string:state_id>")
 class State(MethodView):
+    @blp.response(200, StateSchema)
     def get(self, state_id):
         try:
             return states[state_id]
@@ -25,10 +26,12 @@ class State(MethodView):
         
 @blp.route("/state")
 class StateList(MethodView):
+    @blp.response(200, StateSchema(many=True))
     def get(self):
         return {"states": list(states.values())}
     
     @blp.arguments(StateSchema)
+    @blp.response(201, StateSchema)
     def post(self, state_data):
         for state in states.values():
             if state_data["name"] == state["name"]:
