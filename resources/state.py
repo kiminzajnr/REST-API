@@ -7,7 +7,7 @@ from db import states
 
 blp = Blueprint("states", __name__, description="Operations on states")
 
-@blp.route("/state/<string:state_id")
+@blp.route("/state/<string:state_id>")
 class State(MethodView):
     def get(self, state_id):
         try:
