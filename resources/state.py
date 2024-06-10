@@ -2,6 +2,7 @@ import uuid
 from flask import request
 from flask.views import MethodView
 from flask_smorest import Blueprint, abort
+from schemas import StateSchema
 from db import states
 
 
@@ -27,13 +28,8 @@ class StateList(MethodView):
     def get(self):
         return {"states": list(states.values())}
     
-    def post(self):
-        state_data = request.get_json()
-        if "name" not in state_data:
-            abort(
-                400,
-                message="Bad request. Ensure 'name' is included in JSON payload."
-            )
+    @blp.arguments(StateSchema)
+    def post(self, state_data):
         for state in states.values():
             if state_data["name"] == state["name"]:
                 abort(400, message=f"Store already exists.")
