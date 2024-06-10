@@ -2,13 +2,14 @@ import uuid
 from flask import request
 from flask.views import MethodView
 from flask_smorest import Blueprint, abort
-from schemas import CityScema, CityUpdateSchema
+from schemas import CitySchema, CityUpdateSchema
 from db import cities
 
 blp = Blueprint("Cities", __name__, description="Operations on items")
 
 @blp.route("/city/<string:item_id>")
 class City(MethodView):
+    @blp.response(200, CitySchema)
     def get(self, city_id):
         try:
             return cities[city_id]
@@ -23,6 +24,7 @@ class City(MethodView):
             return {"message": "City not found"}, 404
     
     @blp.arguments(CityUpdateSchema)
+    @blp.response(200, CitySchema)
     def put(self, city_data, city_id):
         try:
             city = cities[city_id]
@@ -33,10 +35,12 @@ class City(MethodView):
         
 @blp.route("/city")
 class CityList(MethodView):
+    @blp.response(201, CitySchema)
     def get(self):
         return {"cities": list(cities.values())}
     
-    @blp.arguments(CityScema)
+    @blp.arguments(CitySchema)
+    @blp.response(201, CitySchema)
     def post(self, city_data):
         for city in cities.values():
             if (
