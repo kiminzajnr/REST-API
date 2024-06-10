@@ -5,23 +5,23 @@ from flask_smorest import Blueprint, abort
 from schemas import CitySchema, CityUpdateSchema
 from db import cities
 
-blp = Blueprint("Cities", __name__, description="Operations on items")
+blp = Blueprint("Cities", __name__, description="Operations on cities")
 
-@blp.route("/city/<string:item_id>")
+@blp.route("/city/<string:city_id>")
 class City(MethodView):
     @blp.response(200, CitySchema)
     def get(self, city_id):
         try:
             return cities[city_id]
         except KeyError:
-            return {"message": "City not found"}, 404
+            return abort(404, message="City not found")
         
     def delete(city_id):
         try:
             del cities[city_id]
             return {"message": "City deleted."}
         except KeyError:
-            return {"message": "City not found"}, 404
+            return abort(404, message="City not found")
     
     @blp.arguments(CityUpdateSchema)
     @blp.response(200, CitySchema)
@@ -31,13 +31,13 @@ class City(MethodView):
             city |= city_data
             return city
         except KeyError:
-            return {"message": "City not found."}, 404
+            abort(404, message="City not found.")
         
 @blp.route("/city")
 class CityList(MethodView):
-    @blp.response(201, CitySchema)
+    @blp.response(200, CitySchema(many=True))
     def get(self):
-        return {"cities": list(cities.values())}
+        return cities.values()
     
     @blp.arguments(CitySchema)
     @blp.response(201, CitySchema)
