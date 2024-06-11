@@ -1,2 +1,3 @@
-states = {}
-cities = {}
+from flask_sqlalchemy import SQLAlchemy
+
+db = SQLAlchemy()
