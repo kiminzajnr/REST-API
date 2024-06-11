@@ -1,10 +1,16 @@
 from marshmallow import Schema, fields
 
+class PlainCitySchema(Schema):
+    id = fields.Int(dump_only=True)
+    name = fields.Str(required=True)
+
+class PlainStateSchema(Schema):
+    id = fields.Int(dump_only=True)
+    name = fields.Str()
 
 class CitySchema(Schema):
-    id = fields.Str(dump_only=True)
-    name = fields.Str(required=True)
-    state_id = fields.Str(required=True)
+    state_id = fields.Int(required=True, load_only=True)
+    state = fields.Nested(PlainStateSchema(), dump_only=True)
 
 
 class CityUpdateSchema(Schema):
@@ -12,5 +18,4 @@ class CityUpdateSchema(Schema):
 
 
 class StateSchema(Schema):
-    id = fields.Str(dump_only=True)
-    name = fields.Str(required=True)
+    cities = fields.List(fields.Nested(PlainStateSchema()), dump_only=True)
