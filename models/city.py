@@ -6,6 +6,7 @@ class CityModel(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(80), unique=True, nullable=False)
+    description = db.Column(db.String)
 
     state_id = db.Column(
         db.Integer, db.ForeignKey("states.id"), unique=False, nullable=False
