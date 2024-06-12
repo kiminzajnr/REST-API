@@ -41,7 +41,7 @@ class City(MethodView):
 class CityList(MethodView):
     @blp.response(200, CitySchema(many=True))
     def get(self):
-        return cities.values()
+        return CityModel.query.all()
     
     @blp.arguments(CitySchema)
     @blp.response(201, CitySchema)
