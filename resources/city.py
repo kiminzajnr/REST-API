@@ -21,7 +21,9 @@ class City(MethodView):
         
     def delete(self, city_id):
         city = CityModel.query.get_or_404(city_id)
-        raise NotImplementedError("Deleting a city is not implemented.")
+        db.session.delete(city)
+        db.session.commit()
+        return {"message": "City deleted."}
     
     @blp.arguments(CityUpdateSchema)
     @blp.response(200, CitySchema)
