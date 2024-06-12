@@ -10,4 +10,4 @@ class CityModel(db.Model):
     state_id = db.Column(
         db.Integer, db.ForeignKey("states.id"), unique=False, nullable=False
     )
-    state = db.relationship("StoreModel", back_populates="cities")
+    state = db.relationship("StateModel", back_populates="cities")
