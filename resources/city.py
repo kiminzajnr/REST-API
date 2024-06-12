@@ -47,15 +47,12 @@ class CityList(MethodView):
     @blp.arguments(CitySchema)
     @blp.response(201, CitySchema)
     def post(self, city_data):
-        for city in cities.values():
-            if (
-                city_data["name"] == city["name"]
-                and city["state_id"] == city["state_id"]
-            ):
-                abort(404, message=f"City already exists.")
+        city = CityModel(**city_data)
 
-        city_id = uuid.uuid4().hex
-        city = {**city_data, "id": city_id}
-        cities[city_id] = city
+        try:
+            db.session.add(city)
+            db.session.commit()
+        except SQLAlchemyError:
+            abort(500, message="An error occurred while inserting the city.")
 
         return city
