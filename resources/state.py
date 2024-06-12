@@ -20,9 +20,11 @@ class State(MethodView):
         state = StateModel.query.get_or_404(state_id)
         return state
     
-    def delete(cls, state_id):
+    def delete(self, state_id):
         state = StateModel.query.get_or_404(state_id)
-        raise NotImplementedError("Deleting a state is not implemented.")
+        db.session.delete(state)
+        db.session.commit()
+        return {"message": "State deleted"}, 200
         
 @blp.route("/state")
 class StateList(MethodView):
