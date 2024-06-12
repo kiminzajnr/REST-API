@@ -15,6 +15,7 @@ class CitySchema(Schema):
 
 class CityUpdateSchema(Schema):
     name = fields.Str()
+    state_id = fields.Int()
 
 
 class StateSchema(Schema):
