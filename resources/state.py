@@ -5,6 +5,11 @@ from flask_smorest import Blueprint, abort
 from schemas import StateSchema
 from db import states
 
+from sqlalchemy.exc import SQLAlchemyError, IntegrityError
+
+from db import db
+from models import StateModel
+
 
 blp = Blueprint("states", __name__, description="Operations on states")
 
@@ -32,13 +37,18 @@ class StateList(MethodView):
     
     @blp.arguments(StateSchema)
     @blp.response(201, StateSchema)
-    def post(cls, state_data):
-        for state in states.values():
-            if state_data["name"] == state["name"]:
-                abort(400, message=f"State already exists.")
+    def post(self, state_data):
+        state = StateModel(**state_data)
 
-        state_id = uuid.uuid4().hex
-        state = {**state_data, "id": state_id}
-        states[state_id] = state
+        try:
+            db.session.add(state)
+            db.session.commit()
+        except IntegrityError:
+            abort(
+            400,
+            message="A state with that name already exists.",
+        )
+        except SQLAlchemyError:
+            abort(500, message="An error occurred creating the state.")
 
         return state
