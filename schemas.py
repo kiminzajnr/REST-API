@@ -8,7 +8,7 @@ class PlainStateSchema(Schema):
     id = fields.Int(dump_only=True)
     name = fields.Str()
 
-class CitySchema(Schema):
+class CitySchema(PlainCitySchema):
     state_id = fields.Int(required=True, load_only=True)
     state = fields.Nested(PlainStateSchema(), dump_only=True)
 
@@ -18,5 +18,5 @@ class CityUpdateSchema(Schema):
     state_id = fields.Int()
 
 
-class StateSchema(Schema):
+class StateSchema(PlainStateSchema):
     cities = fields.List(fields.Nested(PlainStateSchema()), dump_only=True)
