@@ -5,6 +5,11 @@ from flask_smorest import Blueprint, abort
 from schemas import CitySchema, CityUpdateSchema
 from db import cities
 
+from sqlalchemy.exc import SQLAlchemyError
+
+from db import db
+from models import CityModel
+
 blp = Blueprint("Cities", __name__, description="Operations on cities")
 
 @blp.route("/city/<string:city_id>")
