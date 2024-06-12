@@ -1,5 +1,6 @@
 import models
 from db import db
+
 from flask import Flask
 from flask_smorest import Api
 
