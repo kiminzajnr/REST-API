@@ -16,27 +16,18 @@ blp = Blueprint("Cities", __name__, description="Operations on cities")
 class City(MethodView):
     @blp.response(200, CitySchema)
     def get(self, city_id):
-        try:
-            return cities[city_id]
-        except KeyError:
-            return abort(404, message="City not found")
+        city = CityModel.query.get_or_404(city_id)
+        return city
         
-    def delete(city_id):
-        try:
-            del cities[city_id]
-            return {"message": "City deleted."}
-        except KeyError:
-            return abort(404, message="City not found")
+    def delete(self, city_id):
+        city = CityModel.query.get_or_404(city_id)
+        raise NotImplementedError("Deleting a city is not implemented.")
     
     @blp.arguments(CityUpdateSchema)
     @blp.response(200, CitySchema)
     def put(self, city_data, city_id):
-        try:
-            city = cities[city_id]
-            city |= city_data
-            return city
-        except KeyError:
-            abort(404, message="City not found.")
+        city = CityModel.query.get_or_404(city_id)
+        raise NotImplementedError("Updating a city is not implemented.")
         
 @blp.route("/city")
 class CityList(MethodView):
