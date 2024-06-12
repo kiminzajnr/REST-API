@@ -27,7 +27,13 @@ class City(MethodView):
     @blp.response(200, CitySchema)
     def put(self, city_data, city_id):
         city = CityModel.query.get_or_404(city_id)
-        raise NotImplementedError("Updating a city is not implemented.")
+        if city:
+            city.name = city_data["name"]
+        else:
+            city = CityModel(id=city_id, **city_data)
+
+        db.session.add(city)
+        db.session.commit()
         
 @blp.route("/city")
 class CityList(MethodView):
