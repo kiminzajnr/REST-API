@@ -17,17 +17,12 @@ blp = Blueprint("states", __name__, description="Operations on states")
 class State(MethodView):
     @blp.response(200, StateSchema)
     def get(cls, state_id):
-        try:
-            return states[state_id]
-        except KeyError:
-            abort(404, message="State not found")
+        state = StateModel.query.get_or_404(state_id)
+        return state
     
     def delete(cls, state_id):
-        try:
-            del states[state_id]
-            return {"message": "State deleted."}
-        except KeyError:
-            abort(404, message="State not found.")
+        state = StateModel.query.get_or_404(state_id)
+        raise NotImplementedError("Deleting a state is not implemented.")
         
 @blp.route("/state")
 class StateList(MethodView):
