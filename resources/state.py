@@ -27,8 +27,8 @@ class State(MethodView):
 @blp.route("/state")
 class StateList(MethodView):
     @blp.response(200, StateSchema(many=True))
-    def get(cls):
-        return states.values()
+    def get(self):
+        return StateModel.query.all()
     
     @blp.arguments(StateSchema)
     @blp.response(201, StateSchema)
