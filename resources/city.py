@@ -3,7 +3,6 @@ from flask import request
 from flask.views import MethodView
 from flask_smorest import Blueprint, abort
 from schemas import CitySchema, CityUpdateSchema
-from db import cities
 
 from sqlalchemy.exc import SQLAlchemyError
 
