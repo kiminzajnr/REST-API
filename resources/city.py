@@ -34,6 +34,8 @@ class City(MethodView):
 
         db.session.add(city)
         db.session.commit()
+
+        return city
         
 @blp.route("/city")
 class CityList(MethodView):
