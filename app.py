@@ -9,6 +9,7 @@ from flask_jwt_extended import JWTManager
 
 from resources.city import blp as CityBlueprint
 from resources.state import blp as StateBlueprint
+from resources.user import blp as UserBlueprint
 
 from flask_migrate import Migrate
 
@@ -35,5 +36,6 @@ def create_app(db_url=None):
 
     api.register_blueprint(CityBlueprint)
     api.register_blueprint(StateBlueprint)
+    app.register_blueprint(UserBlueprint)
 
     return app
