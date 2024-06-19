@@ -1,9 +1,10 @@
 import os 
 
 import models
+
 from db import db
 
-from flask import Flask
+from flask import Flask, jsonify
 from flask_smorest import Api
 from flask_jwt_extended import JWTManager
 
@@ -32,6 +33,14 @@ def create_app(db_url=None):
 
     app.config["JWT_SECRET_KEY"] = "221087497326914117774012534388572660804" # str(secrets.SystemRandom().getrandbits(128))
     jwt = JWTManager(app)
+
+
+    @jwt.expired_token_loader
+    def expired_token_callback(jwt_header, jwt_payload):
+        return (
+            jsonify({"message": "The token has expired.", "error": "token_expired"}),
+            401,
+        )
 
 
     api.register_blueprint(CityBlueprint)
