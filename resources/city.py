@@ -27,6 +27,7 @@ class City(MethodView):
         db.session.commit()
         return {"message": "City deleted."}
     
+    @jwt_required()
     @blp.arguments(CityUpdateSchema)
     @blp.response(200, CitySchema)
     def put(self, city_data, city_id):
@@ -47,6 +48,7 @@ class CityList(MethodView):
     def get(self):
         return CityModel.query.all()
     
+    @jwt_required()
     @blp.arguments(CitySchema)
     @blp.response(201, CitySchema)
     def post(self, city_data):
