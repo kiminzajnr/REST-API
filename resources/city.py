@@ -2,6 +2,8 @@ import uuid
 from flask import request
 from flask.views import MethodView
 from flask_smorest import Blueprint, abort
+from flask_jwt_extended import jwt_required
+
 from schemas import CitySchema, CityUpdateSchema
 
 from sqlalchemy.exc import SQLAlchemyError
@@ -18,6 +20,7 @@ class City(MethodView):
         city = CityModel.query.get_or_404(city_id)
         return city
         
+    @jwt_required()
     def delete(self, city_id):
         city = CityModel.query.get_or_404(city_id)
         db.session.delete(city)
