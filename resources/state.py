@@ -2,6 +2,8 @@ import uuid
 from flask import request
 from flask.views import MethodView
 from flask_smorest import Blueprint, abort
+from flask_jwt_extended import jwt_required
+
 from schemas import StateSchema
 
 from sqlalchemy.exc import SQLAlchemyError, IntegrityError
@@ -19,6 +21,7 @@ class State(MethodView):
         state = StateModel.query.get_or_404(state_id)
         return state
     
+    @jwt_required()
     def delete(self, state_id):
         state = StateModel.query.get_or_404(state_id)
         db.session.delete(state)
@@ -31,6 +34,7 @@ class StateList(MethodView):
     def get(self):
         return StateModel.query.all()
     
+    @jwt_required()
     @blp.arguments(StateSchema)
     @blp.response(201, StateSchema)
     def post(self, state_data):
