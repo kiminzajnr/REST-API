@@ -5,6 +5,7 @@ from db import db
 
 from flask import Flask
 from flask_smorest import Api
+from flask_jwt_extended import JWTManager
 
 from resources.city import blp as CityBlueprint
 from resources.state import blp as StateBlueprint
@@ -27,6 +28,9 @@ def create_app(db_url=None):
     migrate = Migrate(app, db)
 
     api = Api(app)
+
+    app.config["JWT_SECRET_KEY"] = "eric"
+    jwt = JWTManager(app)
 
 
     api.register_blueprint(CityBlueprint)
