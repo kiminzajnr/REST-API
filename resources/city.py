@@ -50,7 +50,7 @@ class CityList(MethodView):
     def get(self):
         return CityModel.query.all()
     
-    @jwt_required()
+    @jwt_required(fresh=True)
     @blp.arguments(CitySchema)
     @blp.response(201, CitySchema)
     def post(self, city_data):
