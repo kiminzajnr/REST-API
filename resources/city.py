@@ -1,6 +1,6 @@
 from flask.views import MethodView
 from flask_smorest import Blueprint, abort
-from flask_jwt_extended import jwt_required
+from flask_jwt_extended import jwt_required, get_jwt
 
 from schemas import CitySchema, CityUpdateSchema
 
@@ -20,6 +20,10 @@ class City(MethodView):
         
     @jwt_required()
     def delete(self, city_id):
+        jwt = get_jwt()
+        if not jwt.get("is_admin"):
+            abort(401, message="Admin privilege required.")
+            
         city = CityModel.query.get_or_404(city_id)
         db.session.delete(city)
         db.session.commit()
