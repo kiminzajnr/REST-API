@@ -6,6 +6,8 @@ services:
       - "5005:5000"
     volumes:
       - .:/app
+    depends_on:
+      - db
   db:
     image: postgres
     environment:
