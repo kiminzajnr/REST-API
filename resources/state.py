@@ -10,7 +10,7 @@ from db import db
 from models import StateModel
 
 
-blp = Blueprint("states", __name__, description="Operations on states")
+blp = Blueprint("States", __name__, description="Operations on states")
 
 @blp.route("/state/<string:state_id>")
 class State(MethodView):
