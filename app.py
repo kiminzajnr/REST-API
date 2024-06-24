@@ -86,6 +86,6 @@ def create_app(db_url=None):
 
     api.register_blueprint(CityBlueprint)
     api.register_blueprint(StateBlueprint)
-    app.register_blueprint(UserBlueprint)
+    api.register_blueprint(UserBlueprint)
 
     return app
