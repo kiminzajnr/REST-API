@@ -11,7 +11,7 @@ from blocklist import BLOCKLIST
 
 
 
-blp = Blueprint("Users", "users", description="Operations on users")
+blp = Blueprint("Users", __name__, description="Operations on users")
 
 
 @blp.route("/register")
