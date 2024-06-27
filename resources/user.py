@@ -1,5 +1,10 @@
 import os
-import requests
+
+import redis
+from rq import Queue
+
+from tasks import send_user_registration_email
+
 from flask.views import MethodView
 from flask_smorest import Blueprint, abort
 from flask_jwt_extended import get_jwt_identity, create_access_token, jwt_required, get_jwt, create_refresh_token
@@ -17,20 +22,10 @@ from blocklist import BLOCKLIST
 
 blp = Blueprint("Users", "users", description="Operations on users")
 
-
-def send_simple_message(to, subject, body):
-    domain = os.getenv("MAILGUN_DOMAIN")
-    return requests.post(
-		f"https://api.mailgun.net/v3/{domain}/messages",
-		auth=("api", os.getenv("MAILGUN_API_KEY")),
-		data={
-            "from": f"Erick Kiminza <mailgun@{domain}>",
-			"to": [to],
-			"subject": subject,
-			"text": body,
-            },
-        )
-
+connection = redis.from_url(
+    os.getenv("REDIS_URL")
+)
+queue = Queue("emails", connection=connection)
 
 @blp.route("/register")
 class UserRegister(MethodView):
@@ -52,11 +47,7 @@ class UserRegister(MethodView):
         db.session.add(user)
         db.session.commit()
 
-        send_simple_message(
-            to=user.email,
-            subject="Successfully signed up",
-            body=f"Hi {user.username}! You have successfully signed up to the states REST API."
-        )
+        queue.enqueue(send_user_registration_email, user.email, user.username)
 
         return {"message": "User created successfully."}, 201
     
