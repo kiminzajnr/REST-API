@@ -42,7 +42,7 @@ class UserRegister(MethodView):
                 UserModel.email == user_data["email"]
             )
         ).first():
-            abort(409, message="A user with that username already exists.")
+            abort(409, message="A user with that username or email already exists.")
 
         user = UserModel(
             username=user_data["username"],
