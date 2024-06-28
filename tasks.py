@@ -33,6 +33,6 @@ def send_user_registration_email(email, username):
     return send_simple_message(
         email,
         "Successfully signed up",
-        f"Hi {username}! You have successfully signed up to the states REST API.",
+        f"Hi {username}! You have successfully signed up to the Know-US states REST API.",
         render_template("email/action.html", username=username)
     ),
