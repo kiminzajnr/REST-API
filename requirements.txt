@@ -9,5 +9,5 @@ passlib
 gunicorn
 psycopg2-binary
 requests
-rq
-redis
+# rq
+# redis
