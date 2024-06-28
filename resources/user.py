@@ -1,7 +1,7 @@
 import os
 
-import redis
-from rq import Queue
+# import redis
+# from rq import Queue
 
 from tasks import send_user_registration_email
 
@@ -22,10 +22,10 @@ from blocklist import BLOCKLIST
 
 blp = Blueprint("Users", "users", description="Operations on users")
 
-connection = redis.from_url(
-    os.getenv("REDIS_URL")
-)
-queue = Queue("emails", connection=connection)
+# connection = redis.from_url(
+#     os.getenv("REDIS_URL")
+# )
+# queue = Queue("emails", connection=connection)
 
 @blp.route("/register")
 class UserRegister(MethodView):
@@ -47,7 +47,7 @@ class UserRegister(MethodView):
         db.session.add(user)
         db.session.commit()
 
-        queue.enqueue(send_user_registration_email, user.email, user.username)
+        send_user_registration_email(user.email, user.username)
 
         return {"message": "User created successfully."}, 201
     
