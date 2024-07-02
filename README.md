@@ -1,6 +1,11 @@
 # Know-US States REST API
 A complete REST API built with Flask and Python
 
+# Usage
+
+
+[![Usage Video](https://img.youtube.com/vi/bBXlP1QsGLc/0.jpg)](https://www.youtube.com/watch?v=bBXlP1QsGLc)
+
 
 # API Endpoints
 
