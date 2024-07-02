@@ -3,20 +3,6 @@ A complete REST API built with Flask and Python
 
 ![API Screenshot](/sc.png)
 
-# Usage
-
-![Usage Video](/output.gif)
-
-## Usage Video
-
-Watch the usage video:
-
-<details>
-<summary>Click to watch</summary>
-<br>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/bBXlP1QsGLc" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-</details>
-
 # API Endpoints
 
 ## Users
@@ -85,6 +71,11 @@ docker run -dp 5000:5000 -w /app -v "$(pwd):/app" flask-api
 `docker: Cannot connect to the Docker daemon at ... docker.sock. Is the docker daemon running?.`
 - If on macOS/Windows run docker desktop.
 - On Linux start docker service.
+
+
+# Usage
+
+![Usage Video](/output.gif)
 
 # License
 [MIT license](/LICENSE)
