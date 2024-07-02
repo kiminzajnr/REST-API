@@ -1,9 +1,6 @@
 # Know-US States REST API
 A complete REST API built with Flask and Python
 
-# Usage
-
-![Usage](/usage.mov)
 
 # API Endpoints
 
