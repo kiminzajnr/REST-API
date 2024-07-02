@@ -1,6 +1,7 @@
 # Know-US States REST API
 A complete REST API built with Flask and Python
-¡[API Screenshot](/sc.png)
+
+![API Screenshot](/sc.png)
 
 # Usage
 
