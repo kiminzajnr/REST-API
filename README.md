@@ -3,7 +3,7 @@ A complete REST API built with Flask and Python
 
 # Usage
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/bBXlP1QsGLc" frameborder="0" allowfullscreen></iframe>
+[![Usage Video](https://img.youtube.com/vi/bBXlP1QsGLc/maxresdefault.jpg)](https://www.youtube.com/watch?v=bBXlP1QsGLc)
 
 # API Endpoints
 
