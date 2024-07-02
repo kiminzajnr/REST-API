@@ -3,6 +3,8 @@ A complete REST API built with Flask and Python
 
 # Usage
 
+![Usage Video](/output.gif)
+
 ## Usage Video
 
 Watch the usage video:
