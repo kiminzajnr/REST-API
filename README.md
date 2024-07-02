@@ -3,7 +3,15 @@ A complete REST API built with Flask and Python
 
 # Usage
 
-[![Usage Video](https://img.youtube.com/vi/bBXlP1QsGLc/maxresdefault.jpg)](https://www.youtube.com/watch?v=bBXlP1QsGLc)
+## Usage Video
+
+Watch the usage video:
+
+<details>
+<summary>Click to watch</summary>
+<br>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/bBXlP1QsGLc" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</details>
 
 # API Endpoints
 
