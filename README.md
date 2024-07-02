@@ -10,7 +10,7 @@ create, read, update, and delete states and cities.
 |--------|-------------------|---------------------------------------------------|
 | POST   | /register         | Create user accounts given an email and password. |
 | POST   | /login            | Get a JWT given an email and password.            |
-| 🔒 POST | /logout           | Revoke a JWT.                                      |
+| 🔒 POST | /logout          | Revoke a JWT.                                     |
 | 🔒 POST | /refresh          | Get a fresh JWT given a refresh JWT.              |
 | GET    | /user/{user_id}   | (dev-only) Get info about a user given their ID.  |
 | DELETE | /user/{user_id}   | (dev-only) Delete a user given their ID.          |
@@ -19,21 +19,20 @@ create, read, update, and delete states and cities.
 
 | Method | Endpoint          | Description                                       |
 |--------|-------------------|---------------------------------------------------|
-| POST   | /state         | Create a state given a its name. |
-| GET   | /state           | Get a list of states.            |
-| GET | /state/{state_id}    | Delete a state given its ID. |
-| DELETE | /state/{state_id} | Get a state given its ID. |
+| POST   | /state            | Create a state given a its name.                  |
+| GET   | /state             | Get a list of states.                             |
+| GET | /state/{state_id}    | Delete a state given its ID.                      |
+| DELETE | /state/{state_id} | Get a state given its ID.                         |
 
 ## Cities
 
 | Method | Endpoint          | Description                                       |
 |--------|-------------------|---------------------------------------------------|
-| POST   | /register         | Create user accounts given an email and password. |
-| POST   | /login            | Get a JWT given an email and password.            |
-| 🔒 POST | /logout           | Revoke a JWT.                                      |
-| 🔒 POST | /refresh          | Get a fresh JWT given a refresh JWT.              |
-| GET    | /user/{user_id}   | (dev-only) Get info about a user given their ID.  |
-| DELETE | /user/{user_id}   | (dev-only) Delete a user given their ID.          |
+| POST   | /city             | Create a city given its name and state ID.        |
+| GET    | /city             | Get a list of cities.                             |
+| GET    | /city/{city_id}   | Get a city given its ID.                          |
+| PUT    | /city/{city_id}   | Update a city given its ID.                       |
+| DELETE | /city/{user_id}   | Delete a city given its ID.                       |
 
 # Setup
 
