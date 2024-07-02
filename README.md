@@ -2,7 +2,31 @@
 Endpoints to manage states and cities.
 create, read, update, and delete states and cities.
 
-# Endpoints
+# API Endpoints
+
+## Users
+
+| Method | Endpoint          | Description                                       |
+|--------|-------------------|---------------------------------------------------|
+| POST   | /register         | Create user accounts given an email and password. |
+| POST   | /login            | Get a JWT given an email and password.            |
+| 🔒 POST | /logout           | Revoke a JWT.                                      |
+| 🔒 POST | /refresh          | Get a fresh JWT given a refresh JWT.              |
+| GET    | /user/{user_id}   | (dev-only) Get info about a user given their ID.  |
+| DELETE | /user/{user_id}   | (dev-only) Delete a user given their ID.          |
+
+## States
+
+| Method | Endpoint          | Description                                       |
+|--------|-------------------|---------------------------------------------------|
+| POST   | /register         | Create user accounts given an email and password. |
+| POST   | /login            | Get a JWT given an email and password.            |
+| 🔒 POST | /logout           | Revoke a JWT.                                      |
+| 🔒 POST | /refresh          | Get a fresh JWT given a refresh JWT.              |
+| GET    | /user/{user_id}   | (dev-only) Get info about a user given their ID.  |
+| DELETE | /user/{user_id}   | (dev-only) Delete a user given their ID.          |
+
+## Cities
 
 ## API Endpoints
 
@@ -14,6 +38,7 @@ create, read, update, and delete states and cities.
 | 🔒 POST | /refresh          | Get a fresh JWT given a refresh JWT.              |
 | GET    | /user/{user_id}   | (dev-only) Get info about a user given their ID.  |
 | DELETE | /user/{user_id}   | (dev-only) Delete a user given their ID.          |
+
 
 
 - `GET /state` - Retrieve a list of all states.
