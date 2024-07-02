@@ -19,10 +19,10 @@ create, read, update, and delete states and cities.
 
 | Method | Endpoint          | Description                                       |
 |--------|-------------------|---------------------------------------------------|
-| POST   | /state         | Create a state given a state name. |
+| POST   | /state         | Create a state given a its name. |
 | GET   | /state           | Get a list of states.            |
-| GET | /state/{state_id}    | Get a specific states given its ID. |
-| DELETE | /state/{state_id} | Get a fresh JWT given a refresh JWT. |
+| GET | /state/{state_id}    | Delete a state given its ID. |
+| DELETE | /state/{state_id} | Get a state given its ID. |
 
 ## Cities
 
