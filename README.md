@@ -1,6 +1,5 @@
-# RESTful-Flask-API
-Endpoints to manage states and cities.
-create, read, update, and delete states and cities.
+# Know-US States REST API
+
 
 # API Endpoints
 
