@@ -28,8 +28,6 @@ create, read, update, and delete states and cities.
 
 ## Cities
 
-## API Endpoints
-
 | Method | Endpoint          | Description                                       |
 |--------|-------------------|---------------------------------------------------|
 | POST   | /register         | Create user accounts given an email and password. |
@@ -38,18 +36,6 @@ create, read, update, and delete states and cities.
 | 🔒 POST | /refresh          | Get a fresh JWT given a refresh JWT.              |
 | GET    | /user/{user_id}   | (dev-only) Get info about a user given their ID.  |
 | DELETE | /user/{user_id}   | (dev-only) Delete a user given their ID.          |
-
-
-
-- `GET /state` - Retrieve a list of all states.
-- `POST /state` - Create a new state.
-- `GET /state/<string:state_id>` - Retrieve a state given its ID.
-- `DELETE /state/<string:state_id>` - Delete a state given its ID.
-- `GET /city` - Retrieve a list of all cities.
-- `POST /city` - Create a new city.
-- `GET /city/<string:city_id>` - Retrieve a city given its ID.
-- `PUT /city/<string:city_id>` - Update a city given its ID.
-- `DELETE /city/<string:city_id>` - Delete a city given its ID.
 
 # Setup
 
