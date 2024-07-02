@@ -73,3 +73,6 @@ docker run -dp 5000:5000 -w /app -v "$(pwd):/app" flask-api
 `docker: Cannot connect to the Docker daemon at ... docker.sock. Is the docker daemon running?.`
 - If on macOS/Windows run docker desktop.
 - On Linux start docker service.
+
+# License
+[MIT license](/LICENSE)
